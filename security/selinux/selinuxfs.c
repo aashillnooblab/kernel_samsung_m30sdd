@@ -136,8 +136,6 @@ static ssize_t sel_write_enforce(struct file *file, const char __user *buf,
 	if (sscanf(page, "%d", &new_value) != 1)
 		goto out;
 
-	new_value = !!new_value;
-
 	if (new_value != selinux_enforcing) {
 		length = avc_has_perm(current_sid(), SECINITSID_SECURITY,
 				      SECCLASS_SECURITY, SECURITY__SETENFORCE,
@@ -157,6 +155,7 @@ static ssize_t sel_write_enforce(struct file *file, const char __user *buf,
 		if (!selinux_enforcing)
 			call_lsm_notifier(LSM_POLICY_CHANGE, NULL);
 	}
+
 	length = count;
 out:
 	kfree(page);

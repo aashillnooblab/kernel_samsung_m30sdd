@@ -1543,6 +1543,7 @@ out:
 	kfree(s);
 	kfree(t);
 	kfree(n);
+
 	if (!selinux_enforcing)
 		return 0;
 	return -EACCES;
