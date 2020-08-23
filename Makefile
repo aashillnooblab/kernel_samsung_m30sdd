@@ -457,9 +457,11 @@ export MODVERDIR := $(if $(KBUILD_EXTMOD),$(firstword $(KBUILD_EXTMOD))/).tmp_ve
 
 export RCS_FIND_IGNORE := \( -name SCCS -o -name BitKeeper -o -name .svn -o    \
 			  -name CVS -o -name .pc -o -name .hg -o -name .git \) \
+			  -name toolchain \) \
 			  -prune -o
 export RCS_TAR_IGNORE := --exclude SCCS --exclude BitKeeper --exclude .svn \
-			 --exclude CVS --exclude .pc --exclude .hg --exclude .git
+			 --exclude CVS --exclude .pc --exclude .hg --exclude .git \
+			 --exclude toolchain
 
 # ===========================================================================
 # Rules shared between *config targets and build targets
